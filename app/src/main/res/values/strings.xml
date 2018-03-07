@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Ung QR Code</string>
+    <string name="app_name">Ung QR</string>
+    <string name="user">User :</string>
+    <string name="password">Password :</string>
 </resources>
