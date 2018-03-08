@@ -7,6 +7,12 @@ package masterung.androidthai.in.th.ungqrcode.utility;
 public class MyConstance {
 
     private String urlAddUser = "http://androidthai.in.th/cent/addDataMaster.php";
+    private String urlReadAllUser = "http://androidthai.in.th/cent/getAllDataMaster.php";
+
+
+    public String getUrlReadAllUser() {
+        return urlReadAllUser;
+    }
 
     public String getUrlAddUser() {
         return urlAddUser;
