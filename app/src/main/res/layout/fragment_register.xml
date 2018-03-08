@@ -36,6 +36,7 @@
 
             <!--Text Field-->
             <EditText
+                android:id="@+id/edtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name :"
@@ -58,6 +59,7 @@
 
             <!--Text Field-->
             <EditText
+                android:id="@+id/edtUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user"
@@ -80,6 +82,7 @@
 
             <!--Text Field-->
             <EditText
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
