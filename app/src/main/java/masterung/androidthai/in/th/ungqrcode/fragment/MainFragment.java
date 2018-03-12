@@ -1,5 +1,6 @@
 package masterung.androidthai.in.th.ungqrcode.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,11 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import masterung.androidthai.in.th.ungqrcode.R;
+import masterung.androidthai.in.th.ungqrcode.ServiceActivity;
 import masterung.androidthai.in.th.ungqrcode.utility.GetAllData;
 import masterung.androidthai.in.th.ungqrcode.utility.MyAlert;
 import masterung.androidthai.in.th.ungqrcode.utility.MyConstance;
@@ -94,6 +97,30 @@ public class MainFragment extends Fragment{
                             }   // if
 
                         }   // for
+
+                        if (userStatus) {
+//                            User False
+                            MyAlert myAlert = new MyAlert(getActivity());
+                            myAlert.myDialog("User False",
+                                    "No this User in my Database");
+
+                        } else if (passwordString.equals(loginStrings[3])) {
+//                            Password True
+                            Toast.makeText(getActivity(), "Welcome " + loginStrings[1],
+                                    Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(getActivity(), ServiceActivity.class);
+                            intent.putExtra("Login", loginStrings);
+                            startActivity(intent);
+                            getActivity().finish();
+
+                        } else {
+//                            Password False
+                            MyAlert myAlert = new MyAlert(getActivity());
+                            myAlert.myDialog("Password False",
+                                    "Please Try Again Password False");
+
+                        }
 
 
 
