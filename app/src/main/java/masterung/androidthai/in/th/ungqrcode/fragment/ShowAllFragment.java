@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -21,7 +22,7 @@ import masterung.androidthai.in.th.ungqrcode.utility.MyConstance;
  * Created by masterung on 12/3/2018 AD.
  */
 
-public class ShowAllFragment extends Fragment{
+public class ShowAllFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -51,12 +52,19 @@ public class ShowAllFragment extends Fragment{
 
             String[] nameFoodStrings = new String[jsonArray.length()];
             String[] imagePathStrings = new String[jsonArray.length()];
+            String[] categoryStrings = new String[jsonArray.length()];
+            String[] priceStrings = new String[jsonArray.length()];
+            String[] detailStrings = new String[jsonArray.length()];
 
-            for (int i=0; i<jsonArray.length(); i+=1) {
+
+            for (int i = 0; i < jsonArray.length(); i += 1) {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 nameFoodStrings[i] = jsonObject.getString("NameFood");
                 imagePathStrings[i] = jsonObject.getString("ImagePath");
+                categoryStrings[i] = jsonObject.getString("Category");
+                priceStrings[i] = jsonObject.getString("Price");
+                detailStrings[i] = jsonObject.getString("Detail");
 
             }   // for
 
@@ -64,13 +72,19 @@ public class ShowAllFragment extends Fragment{
                     nameFoodStrings, imagePathStrings);
             listView.setAdapter(myAdapter);
 
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+
+
+
+                }
+            });
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
 
     }
