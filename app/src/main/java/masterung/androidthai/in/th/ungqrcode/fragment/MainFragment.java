@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import masterung.androidthai.in.th.ungqrcode.R;
 import masterung.androidthai.in.th.ungqrcode.utility.GetAllData;
 import masterung.androidthai.in.th.ungqrcode.utility.MyAlert;
@@ -65,6 +68,32 @@ public class MainFragment extends Fragment{
 
                         String jsonString = getAllData.get();
                         Log.d("8MarchV1", "JSON ==> " + jsonString);
+
+                        JSONArray jsonArray = new JSONArray(jsonString);
+                        String[] columnUserStrings = myConstance.getColumnUserTableStrings();
+                        String[] loginStrings = new String[columnUserStrings.length];
+                        boolean userStatus = true;
+
+
+
+                        for (int i=0; i<jsonArray.length(); i+=1) {
+
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                            if (userString.equals(jsonObject.getString("User"))) {
+//                                User True
+                                userStatus = false;
+
+                                for (int i1=0; i1<columnUserStrings.length; i1+=1) {
+
+                                    loginStrings[i1] = jsonObject.getString(columnUserStrings[i1]);
+                                    Log.d("8MarchV1", "loginStrings[" + i1 + "] ==> " + loginStrings[i1]);
+
+                                }   //for
+
+                            }   // if
+
+                        }   // for
 
 
 

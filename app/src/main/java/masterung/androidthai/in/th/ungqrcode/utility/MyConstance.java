@@ -9,6 +9,11 @@ public class MyConstance {
     private String urlAddUser = "http://androidthai.in.th/cent/addDataMaster.php";
     private String urlReadAllUser = "http://androidthai.in.th/cent/getAllDataMaster.php";
 
+    private String[] columnUserTableStrings = new String[]{"id", "Name", "User", "Password"};
+
+    public String[] getColumnUserTableStrings() {
+        return columnUserTableStrings;
+    }
 
     public String getUrlReadAllUser() {
         return urlReadAllUser;
