@@ -3,13 +3,19 @@ package masterung.androidthai.in.th.ungqrcode.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import masterung.androidthai.in.th.ungqrcode.R;
+import masterung.androidthai.in.th.ungqrcode.utility.GetFoodWhereQRcode;
+import masterung.androidthai.in.th.ungqrcode.utility.MyConstance;
 
 /**
  * Created by masterung on 13/3/2018 AD.
@@ -70,7 +76,47 @@ public class DisplayQRfragment extends Fragment{
             @Override
             public void onClick(View v) {
 
-            }
+                String tag = "13MarchV2";
+                MyConstance myConstance = new MyConstance();
+                String[] columnStrings = myConstance.getColumnFoodStrings();
+                String[] valueStrings = new String[columnStrings.length];
+
+                try {
+
+                    GetFoodWhereQRcode getFoodWhereQRcode = new GetFoodWhereQRcode(getActivity());
+                    getFoodWhereQRcode.execute(qrScanString, myConstance.getUrlGetFoodWhereQRcode());
+
+                    String jsonString = getFoodWhereQRcode.get();
+                    Log.d(tag, "JSON ==> " + jsonString);
+
+                    JSONArray jsonArray = new JSONArray(jsonString);
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                    for (int i=0; i<columnStrings.length; i+=1) {
+
+                        valueStrings[i] = jsonObject.getString(columnStrings[i]);
+
+                    }   // for
+
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.contentServiceFragment, DetailFragment.detailInstance(
+                                    valueStrings[2],
+                                    valueStrings[5],
+                                    valueStrings[1],
+                                    valueStrings[3],
+                                    valueStrings[4]))
+                            .addToBackStack(null)
+                            .commit();
+
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }   // onClick
         });
     }
 

@@ -54,6 +54,11 @@ public class ServiceActivity extends AppCompatActivity {
 
     }   // Main Method
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
     private void showReadAll() {
         TextView textView = findViewById(R.id.txtShowAll);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +96,7 @@ public class ServiceActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
             }
         });
 
