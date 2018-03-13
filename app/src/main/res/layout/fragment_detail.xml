@@ -80,6 +80,7 @@
 
     <!--Show ListView Button-->
     <Button
+        android:text="Back to Show Alll"
         android:id="@+id/btnShowListView"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
