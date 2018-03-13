@@ -8,11 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import masterung.androidthai.in.th.ungqrcode.fragment.DisplayQRfragment;
+import masterung.androidthai.in.th.ungqrcode.fragment.InfoFragment;
 import masterung.androidthai.in.th.ungqrcode.fragment.QRscanFragment;
 import masterung.androidthai.in.th.ungqrcode.fragment.ShowAllFragment;
 
@@ -53,6 +55,14 @@ public class ServiceActivity extends AppCompatActivity {
 
 
     }   // Main Method
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_service, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     public void onBackPressed() {
@@ -122,6 +132,14 @@ public class ServiceActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.itemInfo) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.contentServiceFragment,
+                            new InfoFragment()).commit();
+            return true;
+        }
+
 
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
