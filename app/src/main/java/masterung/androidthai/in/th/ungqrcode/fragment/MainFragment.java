@@ -111,6 +111,7 @@ public class MainFragment extends Fragment{
 
                             Intent intent = new Intent(getActivity(), ServiceActivity.class);
                             intent.putExtra("Login", loginStrings);
+                            intent.putExtra("Status", true);
                             startActivity(intent);
                             getActivity().finish();
 
